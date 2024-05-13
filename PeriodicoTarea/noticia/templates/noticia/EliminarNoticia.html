@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block cuerpo %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h2 class="card-title">Confirmar Eliminación</h2>
+                </div>
+                <div class="card-body">
+                    <p class="text-danger">¿Estás seguro de eliminar la noticia?</p>
+                    <p><strong>Título:</strong> {{ noticia.titulo }}</p>
+                    <p><strong>Contenido:</strong></p>
+                    <p>{{ noticia.contenido }}</p>
+                    <p><strong>Fecha de Publicación:</strong> {{ noticia.fecha_publicacion }}</p>
+                    <form method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                        <a href="{% url 'noticias' %}" class="btn btn-secondary">Cancelar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
